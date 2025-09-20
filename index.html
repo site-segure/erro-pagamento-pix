@@ -13,11 +13,11 @@
     }
     header {
       background: #004aad;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
     }
     header img {
-      max-width: 220px;
+      max-width: 300px; /* Aumentei o tamanho da logo */
       height: auto;
     }
     main {
@@ -58,6 +58,10 @@
       display: block;
       margin: 15px auto 0;
       max-width: 150px;
+    }
+    /* Centralizar texto do bloco de erro */
+    .error-block {
+      text-align: center;
     }
     /* Modal */
     .modal {
@@ -107,7 +111,7 @@
         padding: 15px;
       }
       header img {
-        max-width: 180px;
+        max-width: 200px;
       }
     }
   </style>
@@ -118,11 +122,11 @@
   </header>
 
   <main>
-    <div class="card">
+    <div class="card error-block">
       <h2>❌ Erro no pagamento</h2>
       <p>O pagamento via <strong>Pix</strong> não foi concluído.</p>
       <h3>Possíveis causas:</h3>
-      <ul>
+      <ul style="list-style:none; padding:0; margin:10px 0;">
         <li>Pedido não autorizado</li>
       </ul>
       <a href="#" class="btn">Tentar novamente</a>
@@ -135,7 +139,7 @@
         Nota: não foram feitas cobranças. Caso seu banco tenha reservado o valor, ele será estornado automaticamente.
       </p>
       <img src="https://vivasorteoficial.com.br/assets/colorful-a40ffe58.svg" alt="Decorativo">
-      <p style="font-size:0.9em; color:#444; margin-top:10px; font-style:italic;">
+      <p style="font-size:0.9em; color:#444; margin-top:10px; font-style:italic; text-align:center;">
         Enquanto o pagamento estiver pendente, o valor pode constar como pendência no seu CPF junto à instituição financeira até a compensação ou estorno.
       </p>
     </div>
@@ -186,3 +190,4 @@
   </script>
 </body>
 </html>
+
