@@ -21,8 +21,7 @@
     .mainHdr{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     h1{margin:0;font-size:20px;color:#1a202c}
     p.lead{color:var(--muted);margin-top:8px}
-    .errorBox{margin-top:18px;background:#fff;padding:18px;border-radius:12px;border:1px solid rgba(0,0,0,0.05);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
-    .iconWarn{width:48px;height:48px;border-radius:10px;background:rgba(230,57,70,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .errorBox{margin-top:18px;background:#fff;padding:18px;border-radius:12px;border:1px solid rgba(0,0,0,0.05)}
     .errorContent h2{margin:0;font-size:18px;color:#1a202c;text-align:center}
     .errorContent p{margin:6px 0 0 0;color:var(--muted);font-size:14px;text-align:center}
     .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
@@ -37,6 +36,8 @@
     .meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .support{margin-top:auto;padding-top:6px;border-top:1px solid rgba(0,0,0,0.1)}
     .retryNote{font-size:13px;color:var(--muted)}
+    .warningBox{margin-top:16px;padding:12px;border-radius:8px;background:var(--danger);color:#fff;font-weight:600;text-align:center;animation:blink 1s infinite;}
+    @keyframes blink {50%{opacity:0.4;}}
     footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
     .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:1200;padding:16px}
     .modal{background:#fff;border-radius:12px;padding:20px;max-width:520px;width:100%;box-shadow:0 12px 40px rgba(2,6,23,0.35);color:#1a202c;text-align:center}
@@ -60,9 +61,6 @@
           </div>
         </div>
         <div class="errorBox" role="alert" aria-live="polite">
-          <div class="iconWarn" aria-hidden>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 20h20L12 2z" fill="#e63946"/><path d="M11 9h2v5h-2zM11 16h2v2h-2z" fill="#fff"/></svg>
-          </div>
           <div class="errorContent">
             <h2>O pagamento não foi autorizado</h2>
             <p>Possíveis causas: pedido não autorizado, dados incompletos ou problema com a conexão do provedor.</p>
@@ -76,6 +74,9 @@
             </ul>
           </div>
         </div>
+        <div class="warningBox">
+          Importante: enquanto o pagamento estiver pendente, o valor pode constar como pendência no seu CPF junto à instituição financeira até a compensação ou estorno.
+        </div>
         <div style="margin-top:14px;color:var(--muted);font-size:13px">
           <strong>Código do erro:</strong> <span id="errorCode">#PG-402-<span style="font-variant:tabular-nums">123</span></span>
         </div>
@@ -85,7 +86,7 @@
           <div class="small">Resumo da compra</div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap">
             <div>
-              <div style="font-weight:700">Viva Sorte +10 Grátis</div>
+              <div style="font-weight:700">Viva Sorte +10 títulos Grátis</div>
               <div class="small" style="margin-top:6px">ID: <span id="orderId">ORD-123456</span></div>
             </div>
           </div>
@@ -98,7 +99,6 @@
           </div>
         </div>
         <div class="retryNote">Nota: não foram feitas cobranças. Caso seu banco tenha reservado o valor, ele será estornado automaticamente.</div>
-        <div style="margin-top:8px;color:#7a7a7a;font-size:13px;font-style:italic">Importante: enquanto o pagamento estiver pendente, o valor pode constar como pendência no seu CPF junto à instituição financeira até a compensação ou estorno.</div>
         <div style="margin-top:12px; text-align:center;">
           <img src="https://vivasorteoficial.com.br/assets/colorful-a40ffe58.svg" alt="Arte Viva Sorte" style="max-width:120px; height:auto; width:100%;" />
         </div>
