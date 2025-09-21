@@ -25,7 +25,7 @@
     .errorContent h2{margin:0;font-size:18px;color:#1a202c;text-align:center}
     .errorContent p{margin:6px 0 0 0;color:var(--muted);font-size:14px;text-align:center}
     .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600;flex:1;justify-content:center;max-width:200px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600;flex:1;justify-content:center;max-width:200px;text-decoration:none}
     .btn-primary{background:var(--accent);color:#fff}
     .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.1);color:#1a202c}
     .helpList{margin-top:20px;background:#f9f9f9;padding:14px;border-radius:10px;border:1px dashed rgba(0,0,0,0.1);color:var(--muted)}
@@ -65,7 +65,9 @@
             <h2>O pagamento não foi autorizado</h2>
             <p>Possíveis causas: pedido não autorizado, dados incompletos ou problema com a conexão do provedor.</p>
             <div class="actions">
-              <button class="btn btn-primary" id="retryBtn" aria-label="Tentar novamente">Tentar novamente</button>
+              <a href="https://comprasegura-vivasorte.site/desconto/" class="btn btn-primary" aria-label="Tentar novamente">
+                Tentar novamente
+              </a>
             </div>
             <ul class="helpList" aria-hidden>
               <li>Verifique se os dados estão corretos.</li>
@@ -139,6 +141,7 @@
     errorCode.textContent = rCode;
     copyCode.textContent = rCode;
     orderId.textContent = ord;
+
     const EXIT_ACK_KEY = 'vs_ack_payment_notice_v1';
     const exitModal = document.getElementById('exitModal');
     const ackNotice = document.getElementById('ackNotice');
@@ -146,17 +149,21 @@
     const stayBtn = document.getElementById('stayBtn');
     const entryModal = document.getElementById('entryModal');
     const entryOk = document.getElementById('entryOk');
+
     function isAcknowledged(){ try { return localStorage.getItem(EXIT_ACK_KEY) === '1' } catch(e){ return false } }
     function setAcknowledged(){ try { localStorage.setItem(EXIT_ACK_KEY,'1'); } catch(e){} ackNotice.style.display = 'block'; exitModal.style.display = 'none'; }
+
     if(isAcknowledged()){ ackNotice.style.display = 'block' }
+
     ackBtn.addEventListener('click', ()=>{ setAcknowledged(); });
     stayBtn.addEventListener('click', ()=>{ exitModal.style.display = 'none'; });
     entryOk.addEventListener('click', ()=>{ entryModal.style.display = 'none'; });
+
     let exitShown = false;
     function showExitModal(){ if(exitShown || isAcknowledged()) return; exitShown = true; exitModal.style.display = 'flex'; }
+
     document.addEventListener('mouseout', function(e){ if(e.clientY <= 0){ showExitModal(); } });
     window.addEventListener('beforeunload', function(e){ if(isAcknowledged()) return undefined; e.preventDefault(); e.returnValue = ''; return ''; });
-    document.getElementById('retryBtn').addEventListener('click', ()=>{ alert('Simulação: tentando novamente...') });
   </script>
 </body>
 </html>
